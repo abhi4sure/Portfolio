@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .video-item {
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .video-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .video-item h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .video-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Video Editing Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Welcome!</h2>
+            <p>Check out some of my recent video editing projects below.</p>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-item">
+                <video controls>
+                    <source src="video1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Project Title 1</h3>
+                <p>Description of the project, tools used, and any other relevant details.</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="video2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Project Title 2</h3>
+                <p>Description of the project, tools used, and any other relevant details.</p>
+            </div>
+            <!-- Add more video items as needed -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Name - Video Editor</p>
+    </footer>
+</body>
+</html>
