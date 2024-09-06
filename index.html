@@ -2,340 +2,331 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Editor</title>
-  <style>
-    body ,html {
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;      
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background-color: black; /* For browsers that do not support gradients */
-      background-image: linear-gradient(to bottom right, black, yellow);
-      overflow-y: scroll; 
-      overflow-x:hidden; 
-
-    }
-    p{font: italic small-caps bold 16px/2 cursive;}
-    h1{font: small-caps bold 24px/1 sans-serif;}
-    @font-face {
-  src: url("https://www.axis-praxis.org/fonts/webfonts/MetaVariableDemo-Set.woff2")
-    format("woff2");
-  font-family: "Meta";
-  font-style: normal;
-  font-weight: normal;
-}
-    main {
-  transition: all 0.5s;
-  -webkit-text-stroke: 4px #d6f4f4;
-  font-variation-settings: "wght" 900, "ital" 1;
-  font-size: 5rem;
-  text-align: center;
-  color: transparent;
-  font-family: "Meta", sans-serif;
-  text-shadow: 10px 10px 0px #07bccc,
-    15px 15px 0px #e601c0,
-    20px 20px 0px #e9019a,
-    25px 25px 0px #f40468,
-    45px 45px 10px #482896;
-  cursor: pointer;
-}
-
-main:hover {
-  font-variation-settings: "wght" 100, "ital" 0;
-  text-shadow: none;
-}
-
-    svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-      font-size: 3rem;
-    }
-    .flip-card {
-      background-color: transparent;
-      width: 300px;
-      height: 300px;
-      perspective: 1000px;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    .flip-card:hover .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      margin-bottom: 10px;
-    }
-
-    .flip-card-front {
-      background-color: #bbb;
-      color: rgb(250, 246, 246);
-    }
-
-    .flip-card-back {
-      opacity: 0.3;
-      background-color: #3e3e3f;
-      color: rgb(255, 251, 251);
-      transform: rotateY(180deg);
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
-
-    header {
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-    }
-
-    nav {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #363738;
-    }
-
-    .category {
-      margin: 20px 0;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    .category h2 {
-      margin-bottom: 15px;
-    }
-
-    .category video {
-      margin-right: 10px;
-    }
-    
-  </style>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<main>Video Editor</main>
-  <header>
+
+    <!-- Header with category navigation -->
+    <h1>Creative Video Editor |
+        Storytelling Through Visuals</h1>
+    <h3>As a passionate and detail-oriented Video Editor, I specialize in transforming raw footage into captivating
+        stories. With 6 years of experience in video editing, I have a proven track record of crafting engaging content
+        for diverse platforms, including YouTube, social media, and commercial projects. My skills range from precise
+        cutting and trimming to advanced color grading, audio mixing, and visual effects.
+        Explore my portfolio to see how I turn concepts into immersive visual experiences.
+    </h3>
+    <nav id="categoryNav">
+        <ul>
+            <li><a href="#category1" class="category-link" data-category="category1"><img src="Files/Title Animation.jpg"
+                        alt="Category 1"></a></li>
+            <li><a href="#category2" class="category-link" data-category="category2"><img src="Files/Medical Industry.jpg" 
+                        alt="Category 2"></a></li>
+            <li><a href="#category3" class="category-link" data-category="category3"><img src="Files/IT Industry.jpg"
+                        alt="Category 3"></a></li>
+            <li><a href="#category4" class="category-link" data-category="category4"><img src="Files/Jewelry Industry.jpg"
+                        alt="Category 4"></a></li>
+            <li><a href="#category5" class="category-link" data-category="category5"><img src="Files/Product Videos.jpg"
+                        alt="Category 5"></a></li>
+            <li><a href="#category6" class="category-link" data-category="category6"><img src="Files/Travel Industry.jpg"
+                        alt="Category 6"></a></li>
+            <li><a href="#category7" class="category-link" data-category="category7"><img src="Files/Different Categories.jpg"
+                        alt="Category 7"></a></li>
+            <li><a href="#category8" class="category-link" data-category="category8"><img src="Files/Indigo Training.jpg"
+                        alt="Category 8"></a></li>
+        </ul>
+    </nav>
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="Files/bg.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+    <!-- Main content with 8 video categories -->
+
+    <main>
+
+        <!-- <nav id="categoryNav">
+            <ul>
+                <li><a href="#" class="category-link" data-category="category5"><img src="Files/Product Videos.jpg" alt="Category 5"></a></li>
+                <li><a href="#" class="category-link" data-category="category6"><img src="Files/Travel Industry.jpg" alt="Category 6"></a></li>
+                <li><a href="#" class="category-link" data-category="category7"><img src="Files/Different Categories.jpg" alt="Category 7"></a></li>
+                <li><a href="#" class="category-link" data-category="category8"><img src="Files/Indigo Training.jpg" alt="Category 8"></a></li>
+            </ul>
+        </nav> -->
+        <section id="category1" class="hidden">
+            <div class="video-container hidden">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/H4DZ2iZd0kc?si=fduKhYuNp9M4f9kH"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                    <p>Video 1 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AZJIqZM-eTo?si=0rjvK_MHSBnQ8TU_"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 2 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-geeF3gBrQA?si=wrm6a3KuRv8BIx_3"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 3 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/TlGE_CQSiNw?si=Wujs9Mbmbxpw8mLu"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 4 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/T4NG9ELAErI?si=9pS-9lPjjSbbzuig"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repeat for other categories            Medical Industry Videos -->
+        <section id="category2" class="hidden">
+            <div class="video-container hidden">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i5lbvSLsMRo?si=ACsrr9Zl5keeoXtR"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 1 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5vdiGDQEX2E?si=d-wL1wyburDNpuqt"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 2 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dATTCVBSftA?si=rnCl0dt4Ttnbrgum"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 3 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aatnvRiOzy8?si=PFxEkTh8025P_LiR"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section class="category5" class="hidden">
+            Product Videos Videos
+            <div class="video-container hidden">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9uE52vgUhVM?si=gChsiCDE_KTccG-g"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 1 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3KEInTHWTI4?si=Juwrsb76BqnLLhjD"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 2 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/mj9sdBqXvxA?si=Ts1UCsCZ5U5WqeW8"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 3 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qaH91HJSZMk?si=L7CoAHZs3j_BcBg_"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 4 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/6S0JOXxo1Wk?si=P3nQh77JAl_-DnOe"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/h3G3pVm2iSM?si=qS2YKA3ff0VUHqdZ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+            </div>
+        </section>
+        <section class="category8" class="hidden">
+            Indigo Training Videos
+            <div class="video-container hidden">
+                ] <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XHloY7ih03k?si=gGhNjLqAic-q-UwZ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 1 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5rAzNUhPOkE?si=LNgmdPyjzkt5Intl"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ISGz6sKuAkU?si=e-MXwDA8sZ1hgJck"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q7UCsgnZjGk?si=02DOPzrgLKSo1OeY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zN91TQUmsPY?si=0pfedn-1bVFQiIRM"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-flsBbEU3Jc?si=3aO70utz-OHbP7HT"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+            </div>
+        </section>
+        <section class="category3" class="hidden">
+            IT Industry Videos Videos
+            <div class="video-container hidden">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KN_Jxjoz-jQ?si=ge9ZrjBaWkEm_pWY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SkkbpBRttG0?si=4wC5sxdhNDD9ue9y"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/KunEXWQim_U?si=uQqwygvKFn_odKUs"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aSbSXDdeaco?si=-ScWvzH2lrMfY0j5"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/yhCDTW1vbcA?si=fwl6d3jkzIQFgFzR"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/q4_wyWVPpUA?si=x9SyNn4nF5hAw6nw"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+            </div>
+        </section>
+        <section class="category4" class="hidden">
+            Jewelry Industry Videos
+            <div class="video-container hidden">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3aqkQL7DJrg?si=sdBcFBMM-PwJuM9m"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZQc1NjPQc1c?si=SntI-afWbnG1TgpT"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/06W2cLgcAzM?si=Nvq_HTZsih76J8jY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Isy_nsED3kc?si=rOnu1l01hu70cxR7"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2vyXhVbvDuo?si=gbWr2V2gJUZHtjJy"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     
-    <!-- <h1>Video Editor</h1> -->
-    <section>
-      <h1>Creative Video Editor</h1>
-      <h2>Storytelling Through Visuals</h2>
-
-      <p>As a passionate and detail-oriented Video Editor, I specialize in transforming raw footage into captivating stories. With 6 of experience in video editing, I have a proven track record of crafting engaging content for diverse platforms, including YouTube, social media, and commercial projects. My skills range from precise cutting and trimming to advanced color grading, audio mixing, and visual effects.        
-        Explore my portfolio to see how I turn concepts into immersive visual experiences.</p>
-    </section>
-  </header>
-
-  <!-- <nav>
-    <a href="category1.html">Category 1</a>
-    <a href="category2.html">Category 2</a>
-    <a href="category3.html">Category 3</a>
-</nav> -->
-<svg>
-  <defs>
-    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-      <stop offset="0%" style="stop-color: #ff9a9e; stop-opacity: 1" />
-      <stop offset="100%" style="stop-color: #fad0c4; stop-opacity: 0" />
-    </radialGradient>
-  </defs>
-
-  <circle cx="50%" cy="100%" r="60" fill="url(#grad1)" opacity="0.8">
-    <animate attributeName="cy" values="100%;-20%" dur="15s" repeatCount="indefinite" />
-    <animate attributeName="r" values="40;80;40" dur="15s" repeatCount="indefinite" />
-  </circle>
-
-  <circle cx="30%" cy="110%" r="40" fill="url(#grad1)" opacity="0.5">
-    <animate attributeName="cy" values="110%;-30%" dur="20s" repeatCount="indefinite" />
-    <animate attributeName="r" values="30;70;30" dur="20s" repeatCount="indefinite" />
-  </circle>
-
-  <circle cx="80%" cy="120%" r="50" fill="url(#grad1)" opacity="0.6">
-    <animate attributeName="cy" values="120%;-40%" dur="25s" repeatCount="indefinite" />
-    <animate attributeName="r" values="35;85;35" dur="25s" repeatCount="indefinite" />
-  </circle>
-</svg>
-
- 
-  <!-- <iframe width="300" height="315" src="https://www.youtube.com/embed/videoseries?si=BT_N17JdGyWuhEnb&amp;list=PL8zwJG_9OAhPqCBwqqlZwhKaRKDG1P6mE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-<iframe src="https://drive.google.com/file/d/1gWU8W3TiQpytMMKUiNTuMRVxasPl6k9v/view?usp=drivesdk" width="640" height="480" allow="autoplay"></iframe> -->
-  <!-- <nav> -->
-  <section class="category">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm">
-          <a href="category1.html">
-            <div class="flip-card">
-              <!-- <h1>
-        Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/Title Animation.jpg" alt="Avatar" style="width:300px;height:300px;">
                 </div>
-                <div class="flip-card-back">
-                  <h1>
-                    Title Animation</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/gG15ayOherE?si=EUgzPHq1n0S040Wg"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Video 5 Description</p>
                 </div>
-              </div>
             </div>
-          </a>
-        </div>
-        <div class="col-sm">
-          <a href="category2.html">
-            <div class="flip-card">
-              <!-- <h1>
-        Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/Medical Industry.jpg" alt="Avatar" style="width:300px;height:300px;">
-                </div>
-                <div class="flip-card-back">
-                  <h1>
-                    Medical Industry</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
-                </div>
-              </div>
+        </section>
+    
+        <section id="category8" class="hidden">
+            <div class="video-container hidden">
+                <iframe src="https://www.youtube.com/embed/example19" title="Video 19" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/example20" title="Video 20" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/example21" title="Video 21" allowfullscreen></iframe>
             </div>
-          </a>
-        </div>
-        <div class="col-sm">
-          <a href="category3.html">
-            <div class="flip-card">
-              <!-- <h1>
-              Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/Product Videos.jpg" alt="Avatar" style="width:300px;height:300px;">
-                </div>
-                <div class="flip-card-back">
-                  <h1>
-                    Product Videos</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm">
-          <a href="ITIndustry.html">
-            <div class="flip-card">
-              <!-- <h1>
-                    Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/IT Industry.jpg" alt="Avatar" style="width:300px;height:300px;">
-                </div>
-                <div class="flip-card-back">
-                  <h1>
-                    IT Industry</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm">
-          <a href="JewelryIndustry.html">
-            <div class="flip-card">
-              <!-- <h1>
-                          Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/Jewelry Industry.jpg" alt="Avatar" style="width:300px;height:300px;">
-                </div>
-                <div class="flip-card-back">
-                  <h1>
-                    Jewelry Industry Videos</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm">
-          <a href="IndigoTraining.html">
-            <div class="flip-card">
-              <!-- <h1>
-                                      Title Animation</h1>  -->
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="Files/Indigo Training.jpg" alt="Avatar" style="width:300px;height:300px;">
-                </div>
-                <div class="flip-card-back">
-                  <h1>
-                    Indigo Training Videos</h1>
-                  <!-- <p>Architect & Engineer</p>  -->
-                  <p>Click here</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+        </section>
 
-</div>
-</div>
-</section>
-        <!-- <nav> -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <footer>
-          <p>&copy; 2024 Abhishek Shah - Video Editor</p>
-      </footer>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
