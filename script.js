@@ -8,7 +8,13 @@ function hideAllSections() {
         section.classList.add('hidden');
     });
 }
-
+function refreshPage() {
+    window.location.reload(); // Refreshes the current page
+}
+function jumpToBottom(id) {
+    const bottom = document.getElementById(id);
+    bottom.scrollIntoView({ behavior: "smooth" });
+}
 // Add event listeners to category links
 categoryLinks.forEach(link => {
     link.addEventListener('click', function(event) {
