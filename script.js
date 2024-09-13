@@ -1,4 +1,3 @@
-// Select all category links and sections
 const categoryLinks = document.querySelectorAll('.category-link');
 const sections = document.querySelectorAll('section');
 
