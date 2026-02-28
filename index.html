@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Abhishek Shah — Senior Video Editor, Motion Graphics Artist & End-to-End Video Producer with 7+ years of experience.">
+<title>Abhishek Shah · Video Editor & Motion Graphics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050508;--surface:rgba(14,14,22,.85);--surface2:rgba(22,22,38,.7);--accent:#d4a853;--accent2:#f0cd6e;--accent-glow:rgba(212,168,83,.15);--neon:#d4a853;--text:#ebebf0;--text2:#8888a0;--glass:rgba(8,8,14,.65);--max:1240px;--radius:16px}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1.15}
+a{text-decoration:none;color:inherit}
+
+/* CANVAS BG */
+#canvas-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* NOISE OVERLAY */
+body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4}
+
+/* GLOBAL */
+.page-wrap{position:relative;z-index:2}
+section{padding:120px 24px;position:relative}
+.container{max-width:var(--max);margin:auto}
+
+/* ANIMATED GRADIENT BORDERS */
+@keyframes borderGlow{0%,100%{border-color:rgba(212,168,83,.15)}50%{border-color:rgba(212,168,83,.4)}}
+
+/* SECTION HEADINGS */
+.section-label{font-size:.7rem;text-transform:uppercase;letter-spacing:5px;color:var(--accent);margin-bottom:10px;font-family:'Space Grotesk',sans-serif;font-weight:500}
+.section-title{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:14px;position:relative;display:inline-block}
+.section-title::after{content:'';position:absolute;bottom:-8px;left:0;width:60px;height:3px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:2px}
+.section-sub{color:var(--text2);max-width:600px;margin-bottom:56px;font-size:1rem;margin-top:20px}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s}
+header.scrolled{background:rgba(5,5,8,.88);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid rgba(212,168,83,.08)}
+.header-inner{max-width:var(--max);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;transition:padding .3s}
+header.scrolled .header-inner{padding:12px 24px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.3rem;color:var(--accent);letter-spacing:.5px;position:relative}
+.logo span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav{display:flex;gap:4px;align-items:center}
+nav a{color:var(--text2);font-size:.8rem;padding:8px 14px;border-radius:8px;transition:all .25s;font-family:'Space Grotesk',sans-serif;font-weight:500;position:relative}
+nav a:hover{color:var(--accent);background:var(--accent-glow)}
+nav a::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:1.5px;background:var(--accent);transition:all .25s;transform:translateX(-50%)}
+nav a:hover::after{width:50%}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.1);color:var(--text);font-size:1.2rem;cursor:pointer;padding:8px 12px;border-radius:8px;transition:border-color .2s}
+.menu-btn:hover{border-color:var(--accent)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;position:relative;overflow:hidden}
+.hero-bg-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,83,.08) 0%,transparent 70%);top:10%;right:-10%;pointer-events:none;animation:pulseGlow 6s ease-in-out infinite}
+.hero-bg-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(100,60,200,.06) 0%,transparent 70%);bottom:5%;left:-8%;pointer-events:none;animation:pulseGlow 8s ease-in-out infinite reverse}
+@keyframes pulseGlow{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+.hero-inner{max-width:800px;position:relative}
+.hero-eyebrow{font-size:.78rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--accent)}
+.hero-h1{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:900;margin-bottom:24px;letter-spacing:-1px}
+.hero-h1 .line1{display:block;background:linear-gradient(135deg,#fff 0%,#ccc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-h1 .line2{display:block;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--text2);font-size:1.1rem;max-width:540px;margin-bottom:40px;line-height:1.8}
+.btn-group{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;border:none;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#0a0a0f;box-shadow:0 4px 25px rgba(212,168,83,.2)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,168,83,.35)}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-primary:hover::before{transform:translateX(100%)}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,168,83,.1)}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.06)}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:2px;margin-top:2px}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;padding:20px 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);position:relative;z-index:2}
+.marquee{display:flex;gap:48px;animation:marquee 25s linear infinite;width:max-content}
+.marquee span{font-family:'Space Grotesk',sans-serif;font-size:.85rem;text-transform:uppercase;letter-spacing:3px;color:rgba(212,168,83,.25);white-space:nowrap;font-weight:600}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text p{color:var(--text2);margin-bottom:18px;font-size:.98rem}
+.about-label{font-size:.85rem;margin-bottom:20px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-weight:600;display:flex;align-items:center;gap:10px}
+.about-label::before{content:'';width:24px;height:2px;background:var(--accent)}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:rgba(212,168,83,.06);border:1px solid rgba(212,168,83,.12);color:var(--text);padding:10px 20px;border-radius:50px;font-size:.8rem;transition:all .3s;cursor:default;font-family:'Space Grotesk',sans-serif;font-weight:500}
+.pill:hover{border-color:var(--accent);background:rgba(212,168,83,.12);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,168,83,.1)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--surface);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);padding:36px 28px;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(212,168,83,.2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(212,168,83,.12),rgba(212,168,83,.04));display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.3rem}
+.service-card h3{font-size:1.05rem;margin-bottom:10px;color:#fff}
+.service-card p{color:var(--text2);font-size:.88rem;line-height:1.6}
+
+/* VIDEO GRID */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
+.video-wrap{position:relative;padding-bottom:56.25%;border-radius:var(--radius);overflow:hidden;background:var(--surface);border:1px solid rgba(255,255,255,.05);transition:all .4s}
+.video-wrap:hover{border-color:rgba(212,168,83,.2);box-shadow:0 12px 40px rgba(0,0,0,.5);transform:translateY(-4px)}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* CATEGORY TILES */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-tile{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/11;cursor:pointer;background:var(--surface2);border:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-end;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.cat-tile::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,83,.08),rgba(100,60,200,.05));opacity:0;transition:opacity .4s}
+.cat-tile:hover{transform:translateY(-6px) scale(1.02);border-color:var(--accent);box-shadow:0 20px 60px rgba(212,168,83,.1)}
+.cat-tile:hover::before{opacity:1}
+.cat-tile-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,8,.9) 0%,rgba(5,5,8,.1) 100%)}
+.cat-tile-content{position:relative;z-index:2;padding:20px;width:100%}
+.cat-tile-content span{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;color:#fff;display:block}
+.cat-tile-content .cat-count{font-size:.7rem;color:var(--accent);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.cat-tile.active{border-color:var(--accent);box-shadow:0 0 30px rgba(212,168,83,.15)}
+
+/* GALLERIES */
+.gallery-section{padding:60px 0;opacity:0;max-height:0;overflow:hidden;transition:all .6s cubic-bezier(.16,1,.3,1)}
+.gallery-section.visible{opacity:1;max-height:none;overflow:visible;padding:60px 0}
+.gallery-section h3{font-size:1.5rem;margin-bottom:24px;color:#fff;display:flex;align-items:center;gap:12px}
+.gallery-section h3::before{content:'';width:4px;height:24px;background:var(--accent);border-radius:2px}
+.gallery-close{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:none;color:var(--text2);cursor:pointer;font-size:.8rem;font-family:'Space Grotesk',sans-serif;margin-bottom:24px;transition:all .25s}
+.gallery-close:hover{border-color:var(--accent);color:var(--accent)}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.process-grid::before{content:'';position:absolute;top:40px;left:60px;right:60px;height:2px;background:linear-gradient(90deg,transparent,rgba(212,168,83,.2),rgba(212,168,83,.2),transparent);z-index:0}
+.step{background:var(--surface);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);padding:32px 24px;position:relative;z-index:1;transition:all .4s}
+.step:hover{transform:translateY(-4px);border-color:rgba(212,168,83,.2);box-shadow:0 16px 50px rgba(0,0,0,.4)}
+.step-num{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:800;background:linear-gradient(135deg,rgba(212,168,83,.3),rgba(212,168,83,.08));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;line-height:1}
+.step h4{font-size:1rem;margin-bottom:8px;color:#fff}
+.step p{color:var(--text2);font-size:.85rem;line-height:1.6}
+
+/* CONTACT */
+#contact{background:linear-gradient(180deg,transparent,rgba(212,168,83,.03))}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:16px}
+.contact-link{display:flex;align-items:center;gap:16px;padding:18px 24px;background:var(--surface);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);transition:all .3s;color:var(--text)}
+.contact-link:hover{border-color:var(--accent);transform:translateX(6px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.contact-link .c-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(212,168,83,.12),rgba(212,168,83,.04));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-link .c-label{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--text2)}
+.contact-link .c-value{font-size:.95rem;color:var(--accent2);margin-top:2px}
+
+/* FOOTER */
+footer{text-align:center;padding:48px 24px;border-top:1px solid rgba(255,255,255,.04);color:var(--text2);font-size:.8rem;position:relative;z-index:2}
+footer a{color:var(--accent);transition:color .2s}
+footer a:hover{color:var(--accent2)}
+
+/* CURSOR GLOW */
+.cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,83,.04) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:left .3s ease-out,top .3s ease-out}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .services-grid,.process-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,8,.96);backdrop-filter:blur(24px);flex-direction:column;justify-content:center;align-items:center;gap:8px;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+  nav.open{transform:translateX(0)}
+  nav a{font-size:1.1rem;padding:14px 24px}
+  .menu-btn{display:block;z-index:1001}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .video-grid,.cat-grid,.services-grid,.process-grid{grid-template-columns:1fr}
+  section{padding:80px 16px}
+  .hero-stats{flex-direction:column;gap:20px}
+  .process-grid::before{display:none}
+  .cursor-glow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- CANVAS BG -->
+<canvas id="canvas-bg"></canvas>
+
+<!-- CURSOR GLOW -->
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="logo"><span>Abhishek Shah</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>
+    <nav id="main-nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Selected Work</a>
+      <a href="#industries">Industries</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+      <a href="Abhishek_Shah_Resume.pdf" target="_blank">Resume</a>
+      <a href="#galleries">Work Art</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-glow2"></div>
+  <div class="container hero-inner reveal">
+    <p class="hero-eyebrow">Video Editor · Motion Graphics · End‑to‑End Production</p>
+    <h1 class="hero-h1">
+      <span class="line1">Cinematic stories</span>
+      <span class="line2">that move brands & people.</span>
+    </h1>
+    <p class="hero-sub">With 7+ years as a hybrid video editor, motion graphics artist, and end‑to‑end producer, I craft compelling visual narratives for medical, travel, jewelry, product, and corporate brands worldwide.</p>
+    <div class="btn-group">
+      <a href="#work" class="btn btn-primary">&#9654; View highlight reel</a>
+      <a href="#contact" class="btn btn-outline">Contact for projects &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">7+</div><div class="label">Years Experience</div></div>
+      <div class="hero-stat"><div class="num">200+</div><div class="label">Projects Delivered</div></div>
+      <div class="hero-stat"><div class="num">8</div><div class="label">Industry Verticals</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>Premiere Pro</span><span>·</span><span>After Effects</span><span>·</span><span>Motion Graphics</span><span>·</span><span>Color Grading</span><span>·</span><span>Sound Design</span><span>·</span><span>Typography</span><span>·</span><span>End‑to‑End Production</span><span>·</span><span>2D Animation</span><span>·</span>
+    <span>Premiere Pro</span><span>·</span><span>After Effects</span><span>·</span><span>Motion Graphics</span><span>·</span><span>Color Grading</span><span>·</span><span>Sound Design</span><span>·</span><span>Typography</span><span>·</span><span>End‑to‑End Production</span><span>·</span><span>2D Animation</span><span>·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">Who I am</p>
+        <h2 class="section-title">About Abhishek</h2>
+        <div class="about-text" style="margin-top:28px">
+          <p>I transform raw footage into polished, emotionally engaging stories. From cinematic brand films to fast‑paced product reels, my work blends sharp editing with creative motion graphics to capture attention and drive results.</p>
+          <p>Across entertainment, jewelry, healthcare, aviation training, and more, I collaborate closely with marketing teams, creative directors, and subject‑matter experts — delivering on both creative vision and business goals, even on the tightest timelines.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="about-label">Tools & Strengths</div>
+        <div class="pills">
+          <span class="pill">Premiere Pro</span>
+          <span class="pill">After Effects</span>
+          <span class="pill">Photoshop</span>
+          <span class="pill">Motion Graphics & Typography</span>
+          <span class="pill">Color Correction & Grading</span>
+          <span class="pill">Sound Design & Mixing</span>
+          <span class="pill">2D & Event Video Editing</span>
+          <span class="pill">End‑to‑End Post‑Production</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label reveal">What I do</p>
+    <h2 class="section-title reveal">Services</h2>
+    <p class="section-sub reveal">From initial ingest to final export, I cover every stage of post‑production — or plug into your pipeline exactly where you need me.</p>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1"><div class="service-icon">&#127916;</div><h3>Video Editing</h3><p>Narrative‑driven cuts for commercials, brand films, social media, and long‑form content. Fast turnarounds without sacrificing quality.</p></div>
+      <div class="service-card reveal reveal-delay-2"><div class="service-icon">&#10024;</div><h3>Motion Graphics & Titles</h3><p>Eye‑catching animated titles, lower thirds, typography sequences, and custom motion elements that elevate every frame.</p></div>
+      <div class="service-card reveal reveal-delay-3"><div class="service-icon">&#128142;</div><h3>Product & Jewelry Videos</h3><p>High‑end product showcases that highlight texture, sparkle, and craftsmanship — optimized for e‑commerce and social platforms.</p></div>
+      <div class="service-card reveal reveal-delay-4"><div class="service-icon">&#9879;</div><h3>Medical & Training Content</h3><p>Clear, accurate, and engaging educational videos for healthcare, aviation, and corporate training environments.</p></div>
+      <div class="service-card reveal reveal-delay-5"><div class="service-icon">&#127912;</div><h3>Color & Finishing</h3><p>Professional color correction, grading, and finishing that set the mood and unify your visual identity across deliverables.</p></div>
+      <div class="service-card reveal"><div class="service-icon">&#127902;</div><h3>Full Post‑Production</h3><p>End‑to‑end pipeline: ingest, assembly, creative edit, motion design, color, sound design, and mastered export.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work">
+  <div class="container">
+    <p class="section-label reveal">Highlight reel</p>
+    <h2 class="section-title reveal">Selected Work</h2>
+    <p class="section-sub reveal">A curated selection across multiple industries — jewelry, product, motion graphics, and more.</p>
+    <div class="video-grid">
+      <div class="video-wrap reveal"><iframe src="https://www.youtube.com/embed/3aqkQL7DJrg?si=sdBcFBMM-PwJuM9m" title="Jewelry Highlight 1" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-wrap reveal reveal-delay-1"><iframe src="https://www.youtube.com/embed/ZQc1NjPQc1c?si=SntI-afWbnG1TgpT" title="Jewelry Highlight 2" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-wrap reveal reveal-delay-2"><iframe src="https://www.youtube.com/embed/06W2cLgcAzM?si=Nvq_HTZsih76J8jY" title="Jewelry Highlight 3" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-wrap reveal reveal-delay-3"><iframe src="https://www.youtube.com/embed/9uE52vgUhVM?si=gChsiCDE_KTccG-g" title="Product Highlight" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-wrap reveal reveal-delay-4"><iframe src="https://www.youtube.com/embed/H4DZ2iZd0kc?si=fduKhYuNp9M4f9kH" title="Title/Motion Highlight" loading="lazy" allowfullscreen></iframe></div>
+      <div class="video-wrap reveal reveal-delay-5"><iframe src="https://www.youtube.com/embed/HEgJP3JF-5g?si=cMAOyGfKhcLj-hdF" title="Mixed Categories" loading="lazy" allowfullscreen></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="container">
+    <p class="section-label reveal">Explore by industry</p>
+    <h2 class="section-title reveal">Industries & Categories</h2>
+    <p class="section-sub reveal">Explore deeper cuts from different industries. Click a category to reveal a curated gallery.</p>
+    <div class="cat-grid">
+      <div class="cat-tile reveal" data-category="category1"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Title Animation</span><div class="cat-count">5 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-1" data-category="category2"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Medical Industry</span><div class="cat-count">4 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-2" data-category="category3"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>IT Industry</span><div class="cat-count">6 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-3" data-category="category4"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Jewelry Industry</span><div class="cat-count">6 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-4" data-category="category5"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Product Videos</span><div class="cat-count">6 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-5" data-category="category6"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Travel Industry</span><div class="cat-count">11 videos</div></div></div>
+      <div class="cat-tile reveal" data-category="category7"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Different Categories</span><div class="cat-count">5 videos</div></div></div>
+      <div class="cat-tile reveal reveal-delay-1" data-category="category8"><div class="cat-tile-overlay"></div><div class="cat-tile-content"><span>Indigo Training</span><div class="cat-count">6 videos</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERIES -->
+<section id="galleries" style="padding-top:40px">
+  <div class="container">
+
+    <div class="gallery-section" id="category1">
+      <button class="gallery-close" data-close="category1">&times; Close gallery</button>
+      <h3>Title Animation</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/H4DZ2iZd0kc?si=fduKhYuNp9M4f9kH" title="Title Animation 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/AZJIqZM-eTo?si=0rjvK_MHSBnQ8TU_" title="Title Animation 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/-geeF3gBrQA?si=wrm6a3KuRv8BIx_3" title="Title Animation 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/TlGE_CQSiNw?si=Wujs9Mbmbxpw8mLu" title="Title Animation 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/T4NG9ELAErI?si=9pS-9lPjjSbbzuig" title="Title Animation 5" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category2">
+      <button class="gallery-close" data-close="category2">&times; Close gallery</button>
+      <h3>Medical Industry</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/i5lbvSLsMRo?si=ACsrr9Zl5keeoXtR" title="Medical 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/RCSqvBO3S0M?si=2tAnmov2hKqwMyRK" title="Medical 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/dATTCVBSftA?si=rnCl0dt4Ttnbrgum" title="Medical 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/aatnvRiOzy8?si=PFxEkTh8025P_LiR" title="Medical 4" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category3">
+      <button class="gallery-close" data-close="category3">&times; Close gallery</button>
+      <h3>IT Industry</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/KN_Jxjoz-jQ?si=ge9ZrjBaWkEm_pWY" title="IT 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/SkkbpBRttG0?si=4wC5sxdhNDD9ue9y" title="IT 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/KunEXWQim_U?si=uQqwygvKFn_odKUs" title="IT 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/aSbSXDdeaco?si=-ScWvzH2lrMfY0j5" title="IT 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/yhCDTW1vbcA?si=fwl6d3jkzIQFgFzR" title="IT 5" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/q4_wyWVPpUA?si=x9SyNn4nF5hAw6nw" title="IT 6" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category4">
+      <button class="gallery-close" data-close="category4">&times; Close gallery</button>
+      <h3>Jewelry Industry</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/3aqkQL7DJrg?si=sdBcFBMM-PwJuM9m" title="Jewelry 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/ZQc1NjPQc1c?si=SntI-afWbnG1TgpT" title="Jewelry 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/06W2cLgcAzM?si=Nvq_HTZsih76J8jY" title="Jewelry 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Isy_nsED3kc?si=rOnu1l01hu70cxR7" title="Jewelry 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/2vyXhVbvDuo?si=gbWr2V2gJUZHtjJy" title="Jewelry 5" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/gG15ayOherE?si=EUgzPHq1n0S040Wg" title="Jewelry 6" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category5">
+      <button class="gallery-close" data-close="category5">&times; Close gallery</button>
+      <h3>Product Videos</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/9uE52vgUhVM?si=gChsiCDE_KTccG-g" title="Product 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/3KEInTHWTI4?si=Juwrsb76BqnLLhjD" title="Product 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/mj9sdBqXvxA?si=Ts1UCsCZ5U5WqeW8" title="Product 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/qaH91HJSZMk?si=L7CoAHZs3j_BcBg_" title="Product 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/6S0JOXxo1Wk?si=P3nQh77JAl_-DnOe" title="Product 5" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/h3G3pVm2iSM?si=qS2YKA3ff0VUHqdZ" title="Product 6" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category6">
+      <button class="gallery-close" data-close="category6">&times; Close gallery</button>
+      <h3>Travel Industry</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/videoseries?si=xzcCO7D9IZyKve_7&list=PL8zwJG_9OAhOCwQUc8j3ADnUKGxXV_tLm" title="Travel 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/NpsIp2Qtpck?si=pesCgvNFx9fkmikw" title="Travel 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/leDBWGIbTLo?si=IzTMXOve-AGwRiKE" title="Travel 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/4InpbxdS73U?si=sN17Bu9w2MKNmEWt" title="Travel 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/SCHlVkv3WUs?si=pA28Elsr7WqHXJ4-" title="Travel 5" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/rtBd2bnI_Qk?si=LJ0Dzv8x7xMQZTVN" title="Travel 6" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/nJppyP92Kls?si=HP86Hi75J6OK8WpH" title="Travel 7" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/IX3JIg3o1U8?si=e4Ws3fSOKkCccA3c" title="Travel 8" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/jz6_fJb_5PA?si=C0TOwMrxatKyq_wc" title="Travel 9" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/XKrkPSn6Mxk?si=ffL1Iy_mrSJYpa1G" title="Travel 10" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/qmt99fpwxto?si=m61aYQyayXpo3tUU" title="Travel 11" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category7">
+      <button class="gallery-close" data-close="category7">&times; Close gallery</button>
+      <h3>Different Categories</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/HEgJP3JF-5g?si=cMAOyGfKhcLj-hdF" title="Mixed 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/kEWJ8H-Rwzg?si=J_EV9gHE9jHYGlOH" title="Mixed 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/WBY5KYFi8Kc?si=W87Q0SflYyzzGqLD" title="Mixed 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/xOBGVJ8MveE?si=bon3jKoABO4Av9jM" title="Mixed 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/xtSiWER_LLM?si=XbtiOrJpW9OmJwNY" title="Mixed 5" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+    <div class="gallery-section" id="category8">
+      <button class="gallery-close" data-close="category8">&times; Close gallery</button>
+      <h3>Indigo Training</h3>
+      <div class="video-grid">
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/XHloY7ih03k?si=gGhNjLqAic-q-UwZ" title="Indigo 1" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/5rAzNUhPOkE?si=LNgmdPyjzkt5Intl" title="Indigo 2" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/ISGz6sKuAkU?si=e-MXwDA8sZ1hgJck" title="Indigo 3" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Q7UCsgnZjGk?si=02DOPzrgLKSo1OeY" title="Indigo 4" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/zN91TQUmsPY?si=0pfedn-1bVFQiIRM" title="Indigo 5" loading="lazy" allowfullscreen></iframe></div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/-flsBbEU3Jc?si=3aO70utz-OHbP7HT" title="Indigo 6" loading="lazy" allowfullscreen></iframe></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <p class="section-label reveal">My workflow</p>
+    <h2 class="section-title reveal">How I Work</h2>
+    <p class="section-sub reveal">A streamlined process built for speed and quality — whether you need a 30‑second reel or a full training series.</p>
+    <div class="process-grid">
+      <div class="step reveal"><div class="step-num">01</div><h4>Discovery</h4><p>We align on goals, audience, tone, and deliverables. I review footage, briefs, and brand guidelines before a single cut.</p></div>
+      <div class="step reveal reveal-delay-1"><div class="step-num">02</div><h4>Edit & Motion Pass</h4><p>I build the narrative structure, pacing, and creative motion elements — titles, transitions, and graphics — in parallel.</p></div>
+      <div class="step reveal reveal-delay-2"><div class="step-num">03</div><h4>Refinement</h4><p>Collaborative feedback rounds with frame‑accurate notes. I iterate quickly while keeping the vision intact.</p></div>
+      <div class="step reveal reveal-delay-3"><div class="step-num">04</div><h4>Color & Sound Finish</h4><p>Final color grade, sound design, audio mix, and mastered export in every format you need.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">Let's build something together</h2>
+        <p class="section-sub" style="margin-top:20px">Whether it's a single reel or an ongoing production partnership, I'd love to hear about your project. Reach out and let's make it happen.</p>
+      </div>
+      <div class="contact-links reveal reveal-delay-2">
+        <a href="mailto:abhishekshah1261996@gmail.com" class="contact-link">
+          <div class="c-icon">&#9993;</div>
+          <div><div class="c-label">Email</div><div class="c-value">abhishekshah1261996@gmail.com</div></div>
+        </a>
+        <a href="tel:+919022248745" class="contact-link">
+          <div class="c-icon">&#9742;</div>
+          <div><div class="c-label">Phone</div><div class="c-value">+91 90222 48745</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/abhi4sure/" target="_blank" rel="noopener" class="contact-link">
+          <div class="c-icon">in</div>
+          <div><div class="c-label">LinkedIn</div><div class="c-value">abhi4sure</div></div>
+        </a>
+        <a href="Abhishek_Shah_Resume.pdf" target="_blank" class="contact-link">
+          <div class="c-icon">&#128196;</div>
+          <div><div class="c-label">Resume</div><div class="c-value">Download PDF</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2024 Abhishek Shah &middot; Video Editor & Motion Graphics</p>
+  <p style="margin-top:10px"><a href="#hero">Back to top &uarr;</a></p>
+</footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+// ── PARTICLE CANVAS (3D starfield) ──
+(function(){
+  const c=document.getElementById('canvas-bg'),ctx=c.getContext('2d');
+  let W,H,particles=[],mouse={x:W/2,y:H/2};
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+
+  class Particle{
+    constructor(){this.reset()}
+    reset(){
+      this.x=Math.random()*W-W/2;
+      this.y=Math.random()*H-H/2;
+      this.z=Math.random()*1500+500;
+      this.pz=this.z;
+      this.speed=Math.random()*1.5+.3;
+      this.color=Math.random()>.85?'212,168,83':'180,180,200';
+      this.alpha=Math.random()*.6+.2;
+    }
+    update(){
+      this.pz=this.z;
+      this.z-=this.speed;
+      if(this.z<1)this.reset();
+    }
+    draw(){
+      const sx=map(this.x/this.z,0,1,0,W)+W/2;
+      const sy=map(this.y/this.z,0,1,0,H)+H/2;
+      const px=map(this.x/this.pz,0,1,0,W)+W/2;
+      const py=map(this.y/this.pz,0,1,0,H)+H/2;
+      const r=Math.max(map(this.z,0,1500,3,.1),.1);
+      const a=Math.max(this.alpha*map(this.z,0,1500,.01,1),.01);
+      ctx.beginPath();
+      ctx.moveTo(px,py);
+      ctx.lineTo(sx,sy);
+      ctx.strokeStyle=`rgba(${this.color},${a})`;
+      ctx.lineWidth=r;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(sx,sy,Math.max(r*.6,.05),0,Math.PI*2);
+      ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
+      ctx.fill();
+    }
+  }
+  function map(v,a,b,c,d){return c+(d-c)*((v-a)/(b-a))}
+  for(let i=0;i<220;i++)particles.push(new Particle());
+
+  // Floating geometric shapes
+  const shapes=[];
+  for(let i=0;i<8;i++){
+    shapes.push({
+      x:Math.random()*W,y:Math.random()*H,
+      size:Math.random()*80+40,
+      rot:Math.random()*Math.PI*2,
+      rotSpeed:(Math.random()-.5)*.005,
+      drift:(Math.random()-.5)*.15,
+      driftY:(Math.random()-.5)*.1,
+      sides:Math.floor(Math.random()*3)+3,
+      alpha:Math.random()*.04+.01
+    });
+  }
+
+  function drawShape(s){
+    ctx.save();
+    ctx.translate(s.x,s.y);
+    ctx.rotate(s.rot);
+    ctx.beginPath();
+    for(let i=0;i<=s.sides;i++){
+      const a=(Math.PI*2/s.sides)*i-Math.PI/2;
+      const x=Math.cos(a)*s.size,y=Math.sin(a)*s.size;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle=`rgba(212,168,83,${s.alpha})`;
+    ctx.lineWidth=1;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,W,H);
+    // shapes
+    shapes.forEach(s=>{
+      s.rot+=s.rotSpeed;
+      s.x+=s.drift;s.y+=s.driftY;
+      if(s.x>W+100)s.x=-100;if(s.x<-100)s.x=W+100;
+      if(s.y>H+100)s.y=-100;if(s.y<-100)s.y=H+100;
+      drawShape(s);
+    });
+    // particles
+    particles.forEach(p=>{p.update();p.draw()});
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ── HEADER SCROLL ──
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// ── MOBILE MENU ──
+const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('main-nav');
+menuBtn.addEventListener('click',()=>{
+  nav.classList.toggle('open');
+  menuBtn.innerHTML=nav.classList.contains('open')?'&times;':'&#9776;';
+});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  nav.classList.remove('open');menuBtn.innerHTML='&#9776;';
+}));
+
+// ── CURSOR GLOW ──
+const glow=document.getElementById('cursor-glow');
+document.addEventListener('mousemove',e=>{
+  glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';
+});
+
+// ── SCROLL REVEAL ──
+const revealEls=document.querySelectorAll('.reveal');
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}});
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el=>revealObs.observe(el));
+
+// ── CATEGORY TILES ──
+const tiles=document.querySelectorAll('.cat-tile');
+const galleries=document.querySelectorAll('.gallery-section');
+
+tiles.forEach(tile=>{
+  tile.addEventListener('click',()=>{
+    const cat=tile.dataset.category;
+    const target=document.getElementById(cat);
+    const wasVisible=target.classList.contains('visible');
+
+    // remove active from all tiles, hide all galleries
+    tiles.forEach(t=>t.classList.remove('active'));
+    galleries.forEach(g=>g.classList.remove('visible'));
+
+    if(!wasVisible&&target){
+      tile.classList.add('active');
+      target.classList.add('visible');
+      setTimeout(()=>target.scrollIntoView({behavior:'smooth',block:'start'}),80);
+    }
+  });
+});
+
+// ── GALLERY CLOSE BUTTONS ──
+document.querySelectorAll('.gallery-close').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const cat=btn.dataset.close;
+    document.getElementById(cat).classList.remove('visible');
+    tiles.forEach(t=>{if(t.dataset.category===cat)t.classList.remove('active')});
+    document.getElementById('industries').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// ── COUNTER ANIMATION ──
+const statNums=document.querySelectorAll('.hero-stat .num');
+function animateCounters(){
+  statNums.forEach(el=>{
+    const text=el.textContent;
+    const num=parseInt(text);
+    const suffix=text.replace(/[0-9]/g,'');
+    let current=0;
+    const step=Math.ceil(num/40);
+    const timer=setInterval(()=>{
+      current+=step;
+      if(current>=num){current=num;clearInterval(timer)}
+      el.textContent=current+suffix;
+    },30);
+  });
+}
+// trigger once hero visible
+const heroObs=new IntersectionObserver((entries)=>{
+  if(entries[0].isIntersecting){animateCounters();heroObs.disconnect()}
+},{threshold:.5});
+heroObs.observe(document.getElementById('hero'));
+</script>
+</body>
+</html>
