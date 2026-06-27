@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Abhishek Shah — Content Manager & End-to-End Video Producer with 7+ years of experience.">
-<title>Abhishek Shah · Content Manager & Video Producer</title>
+<meta name="description" content="Abhishek Shah — Content Manager & Video Team Lead. 7+ years leading content strategy, pre-production, and end-to-end video production across travel, hospitality, and brand content.">
+<title>Abhishek Shah · Content Manager & Video Team Lead</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -82,7 +82,10 @@ nav a:hover::after{width:50%}
 .btn-primary:hover::before{transform:translateX(100%)}
 .btn-outline{background:transparent;color:var(--text);border:1.5px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
 .btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,168,83,.1)}
-.hero-role{margin-top:48px;padding-top:28px;border-top:1px solid rgba(255,255,255,.06);color:var(--text2);font-size:.95rem;font-family:'Space Grotesk',sans-serif;line-height:1.6}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.06)}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat .label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:2px;margin-top:2px}
+.hero-role{margin-top:32px;padding-top:0;border-top:none;color:var(--text2);font-size:.95rem;font-family:'Space Grotesk',sans-serif;line-height:1.6}
 .hero-role strong{font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
 /* MARQUEE */
@@ -109,15 +112,19 @@ nav a:hover::after{width:50%}
 .service-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(212,168,83,.12),rgba(212,168,83,.04));display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.3rem}
 .service-card h3{font-size:1.05rem;margin-bottom:10px;color:#fff}
 .service-card p{color:var(--text2);font-size:.88rem;line-height:1.6}
+.role-list{margin-top:16px;padding-left:20px;color:var(--text2);font-size:.9rem}
+.role-list li{margin-bottom:8px;line-height:1.6}
+.role-list li::marker{color:var(--accent)}
 
 /* CATEGORY TILES */
 .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.cat-tile{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/11;background:var(--surface2);border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.cat-tile{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:auto;min-height:100px;padding:24px 16px;background:var(--surface2);border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(.16,1,.3,1)}
 .cat-tile::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,83,.08),rgba(100,60,200,.05));opacity:0;transition:opacity .4s}
 .cat-tile:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 60px rgba(212,168,83,.1)}
 .cat-tile:hover::before{opacity:1}
 .cat-tile-content{position:relative;z-index:2;padding:20px;width:100%;text-align:center}
 .cat-tile-content span{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;color:#fff;display:block}
+.cat-desc{font-size:.78rem;color:var(--text2);margin-top:8px;line-height:1.5;font-family:'Roboto',sans-serif;font-weight:400}
 
 /* PROCESS */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
@@ -159,6 +166,7 @@ footer a:hover{color:var(--accent2)}
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .cat-grid,.services-grid,.process-grid{grid-template-columns:1fr}
   section{padding:80px 16px}
+  .hero-stats{flex-direction:column;gap:20px}
   .process-grid::before{display:none}
   .cursor-glow{display:none}
 }
@@ -197,12 +205,17 @@ footer a:hover{color:var(--accent2)}
   <div class="container hero-inner reveal">
     <p class="hero-eyebrow">Content Manager · End‑to‑End Production</p>
     <h1 class="hero-h1">
-      <span class="line1">Cinematic stories</span>
-      <span class="line2">that move brands & people.</span>
+      <span class="line1">Content that builds brands</span>
+      <span class="line2">from idea to final cut.</span>
     </h1>
-    <p class="hero-sub">With 7+ years as a hybrid video editor, motion graphics artist, and end‑to‑end producer, I craft compelling visual narratives for medical, travel, jewelry, product, and corporate brands worldwide.</p>
+    <p class="hero-sub">Content Manager and video team lead with 7+ years shaping brand stories across travel, hospitality, healthcare, product, and corporate. I plan, script, and produce content end to end — from pre-production through final delivery.</p>
     <div class="btn-group">
       <a href="#contact" class="btn btn-outline">Contact for projects &rarr;</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat"><div class="num">7+</div><div class="label">Years in Content & Video</div></div>
+      <div class="hero-stat"><div class="num">200+</div><div class="label">Projects Delivered</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="label">Industry Verticals</div></div>
     </div>
     <p class="hero-role reveal">
       Currently <strong>Content Manager & Video Team Lead</strong> at The Hosteller
@@ -226,23 +239,39 @@ footer a:hover{color:var(--accent2)}
         <p class="section-label">Who I am</p>
         <h2 class="section-title">About Abhishek</h2>
         <div class="about-text" style="margin-top:28px">
-          <p>I transform raw footage into polished, emotionally engaging stories. From cinematic brand films to fast‑paced product reels, my work blends sharp editing with creative motion graphics to capture attention and drive results.</p>
-          <p>Across entertainment, jewelry, healthcare, aviation training, and more, I collaborate closely with marketing teams, creative directors, and subject‑matter experts — delivering on both creative vision and business goals, even on the tightest timelines.</p>
+          <p>I lead content and video teams to turn ideas into polished, on-brand stories. From strategy and scripting through editing and delivery, I own the full content pipeline — blending creative direction with hands-on production.</p>
+          <p>Across travel, hospitality, healthcare, jewelry, and corporate, I work closely with marketing teams, creative directors, and stakeholders — aligning content strategy with business goals and delivering on tight timelines.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="about-label">Tools & Strengths</div>
+        <div class="about-label">Core Strengths</div>
         <div class="pills">
-          <span class="pill">Premiere Pro</span>
-          <span class="pill">After Effects</span>
-          <span class="pill">Photoshop</span>
-          <span class="pill">Motion Graphics & Typography</span>
-          <span class="pill">Color Correction & Grading</span>
-          <span class="pill">Sound Design & Mixing</span>
-          <span class="pill">2D & Event Video Editing</span>
-          <span class="pill">End‑to‑End Post‑Production</span>
+          <span class="pill">Content Strategy & Planning</span>
+          <span class="pill">Pre-Production & Storyboarding</span>
+          <span class="pill">Script Writing</span>
+          <span class="pill">Video Team Leadership</span>
+          <span class="pill">Premiere Pro & After Effects</span>
+          <span class="pill">Color Grading & Sound Design</span>
+          <span class="pill">End-to-End Production</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT ROLE -->
+<section id="current-role">
+  <div class="container">
+    <p class="section-label reveal">Current role</p>
+    <div class="service-card reveal" style="max-width:800px">
+      <div class="service-icon">&#127968;</div>
+      <h3>Content Manager & Video Team Lead · The Hosteller</h3>
+      <p>Leading content and video production for one of India's largest hostel and travel hospitality brands.</p>
+      <ul class="role-list">
+        <li>Leading the in-house video team — briefs, workflows, QC, and delivery</li>
+        <li>Planning and producing travel, destination, and brand content for social and marketing</li>
+        <li>End-to-end ownership from scripting and storyboarding through final edit and export</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -252,14 +281,14 @@ footer a:hover{color:var(--accent2)}
   <div class="container">
     <p class="section-label reveal">What I do</p>
     <h2 class="section-title reveal">Services</h2>
-    <p class="section-sub reveal">From initial ingest to final export, I cover every stage of post‑production — or plug into your pipeline exactly where you need me.</p>
+    <p class="section-sub reveal">From content strategy and pre-production through final delivery — I lead projects end to end or plug in where your team needs me.</p>
     <div class="services-grid">
-      <div class="service-card reveal reveal-delay-1"><div class="service-icon">&#127916;</div><h3>Video Editing</h3><p>Narrative‑driven cuts for commercials, brand films, social media, and long‑form content. Fast turnarounds without sacrificing quality.</p></div>
-      <div class="service-card reveal reveal-delay-2"><div class="service-icon">&#10024;</div><h3>Motion Graphics & Titles</h3><p>Eye‑catching animated titles, lower thirds, typography sequences, and custom motion elements that elevate every frame.</p></div>
-      <div class="service-card reveal reveal-delay-3"><div class="service-icon">&#128142;</div><h3>Product & Jewelry Videos</h3><p>High‑end product showcases that highlight texture, sparkle, and craftsmanship — optimized for e‑commerce and social platforms.</p></div>
-      <div class="service-card reveal reveal-delay-4"><div class="service-icon">&#9879;</div><h3>Medical & Training Content</h3><p>Clear, accurate, and engaging educational videos for healthcare, aviation, and corporate training environments.</p></div>
-      <div class="service-card reveal reveal-delay-5"><div class="service-icon">&#127912;</div><h3>Color & Finishing</h3><p>Professional color correction, grading, and finishing that set the mood and unify your visual identity across deliverables.</p></div>
-      <div class="service-card reveal"><div class="service-icon">&#127902;</div><h3>Full Post‑Production</h3><p>End‑to‑end pipeline: ingest, assembly, creative edit, motion design, color, sound design, and mastered export.</p></div>
+      <div class="service-card reveal reveal-delay-1"><div class="service-icon">&#128203;</div><h3>Content Strategy & Planning</h3><p>Content calendars, creative briefs, brand voice, and channel planning — building a clear roadmap before production begins.</p></div>
+      <div class="service-card reveal reveal-delay-2"><div class="service-icon">&#128221;</div><h3>Pre-Production & Storyboarding</h3><p>Scripts, shot lists, storyboards, and creative direction — aligning the team on vision before the first frame is captured.</p></div>
+      <div class="service-card reveal reveal-delay-3"><div class="service-icon">&#128101;</div><h3>Video Team Leadership</h3><p>Leading editors and creators, managing workflows, quality control, and deadlines — keeping projects on track and on brand.</p></div>
+      <div class="service-card reveal reveal-delay-4"><div class="service-icon">&#128241;</div><h3>Brand & Social Content</h3><p>Reels, campaigns, and brand films for travel, hospitality, product, and corporate — optimised for the platforms that matter.</p></div>
+      <div class="service-card reveal reveal-delay-5"><div class="service-icon">&#127916;</div><h3>Post-Production & Finishing</h3><p>Editing, motion design, color grading, and sound — hands-on production when the project needs it.</p></div>
+      <div class="service-card reveal"><div class="service-icon">&#127902;</div><h3>End-to-End Production</h3><p>Full pipeline ownership from concept and scripting through edit, finishing, and mastered export in every format you need.</p></div>
     </div>
   </div>
 </section>
@@ -267,17 +296,17 @@ footer a:hover{color:var(--accent2)}
 <!-- INDUSTRIES -->
 <section id="industries">
   <div class="container">
-    <p class="section-label reveal">Explore by industry</p>
+    <p class="section-label reveal">Industries I've worked in</p>
     <h2 class="section-title reveal">Industries & Categories</h2>
-    <p class="section-sub reveal">Industries and categories I've worked across.</p>
+    <p class="section-sub reveal">A cross-section of industries where I've planned, produced, and delivered content.</p>
     <div class="cat-grid">
-      <div class="cat-tile reveal"><div class="cat-tile-content"><span>Travel Industry</span></div></div>
-      <div class="cat-tile reveal reveal-delay-1"><div class="cat-tile-content"><span>Medical Industry</span></div></div>
-      <div class="cat-tile reveal reveal-delay-2"><div class="cat-tile-content"><span>IT Industry</span></div></div>
-      <div class="cat-tile reveal reveal-delay-3"><div class="cat-tile-content"><span>Jewelry Industry</span></div></div>
-      <div class="cat-tile reveal reveal-delay-4"><div class="cat-tile-content"><span>Product Videos</span></div></div>
-      <div class="cat-tile reveal reveal-delay-5"><div class="cat-tile-content"><span>Different Categories</span></div></div>
-      <div class="cat-tile reveal"><div class="cat-tile-content"><span>Indigo Training</span></div></div>
+      <div class="cat-tile reveal"><div class="cat-tile-content"><span>Travel Industry</span><p class="cat-desc">Destination films, hostel brand content, social campaigns</p></div></div>
+      <div class="cat-tile reveal reveal-delay-1"><div class="cat-tile-content"><span>Medical Industry</span><p class="cat-desc">Training videos, educational content, healthcare explainers</p></div></div>
+      <div class="cat-tile reveal reveal-delay-2"><div class="cat-tile-content"><span>IT Industry</span><p class="cat-desc">Product demos, corporate films, tech brand content</p></div></div>
+      <div class="cat-tile reveal reveal-delay-3"><div class="cat-tile-content"><span>Jewelry Industry</span><p class="cat-desc">Product showcases, craftsmanship films, e-commerce reels</p></div></div>
+      <div class="cat-tile reveal reveal-delay-4"><div class="cat-tile-content"><span>Product Videos</span><p class="cat-desc">E-commerce, social reels, brand product launches</p></div></div>
+      <div class="cat-tile reveal reveal-delay-5"><div class="cat-tile-content"><span>Different Categories</span><p class="cat-desc">Mixed-format brand, event, and campaign content</p></div></div>
+      <div class="cat-tile reveal"><div class="cat-tile-content"><span>Indigo Training</span><p class="cat-desc">Aviation training modules, instructional video series</p></div></div>
     </div>
   </div>
 </section>
@@ -287,12 +316,12 @@ footer a:hover{color:var(--accent2)}
   <div class="container">
     <p class="section-label reveal">My workflow</p>
     <h2 class="section-title reveal">How I Work</h2>
-    <p class="section-sub reveal">A streamlined process built for speed and quality — whether you need a 30‑second reel or a full training series.</p>
+    <p class="section-sub reveal">A content-first workflow built for clarity and speed — whether it's a social campaign or a full video series.</p>
     <div class="process-grid">
-      <div class="step reveal"><div class="step-num">01</div><h4>Discovery</h4><p>We align on goals, audience, tone, and deliverables. I review footage, briefs, and brand guidelines before a single cut.</p></div>
-      <div class="step reveal reveal-delay-1"><div class="step-num">02</div><h4>Edit & Motion Pass</h4><p>I build the narrative structure, pacing, and creative motion elements — titles, transitions, and graphics — in parallel.</p></div>
-      <div class="step reveal reveal-delay-2"><div class="step-num">03</div><h4>Refinement</h4><p>Collaborative feedback rounds with frame‑accurate notes. I iterate quickly while keeping the vision intact.</p></div>
-      <div class="step reveal reveal-delay-3"><div class="step-num">04</div><h4>Color & Sound Finish</h4><p>Final color grade, sound design, audio mix, and mastered export in every format you need.</p></div>
+      <div class="step reveal"><div class="step-num">01</div><h4>Strategy & Brief</h4><p>We align on goals, audience, channels, and content plan — reviewing brand guidelines and defining deliverables before production starts.</p></div>
+      <div class="step reveal reveal-delay-1"><div class="step-num">02</div><h4>Pre-Production</h4><p>Scripts, storyboards, shot planning, and team alignment — building a clear creative roadmap everyone can follow.</p></div>
+      <div class="step reveal reveal-delay-2"><div class="step-num">03</div><h4>Production & Edit</h4><p>Shoot coordination, editing, motion design, and collaborative review cycles — iterating quickly while keeping the vision intact.</p></div>
+      <div class="step reveal reveal-delay-3"><div class="step-num">04</div><h4>Delivery & Optimisation</h4><p>Platform-ready exports, format variants, and feedback-driven iteration — delivering content that performs across every channel.</p></div>
     </div>
   </div>
 </section>
@@ -304,7 +333,7 @@ footer a:hover{color:var(--accent2)}
       <div class="reveal">
         <p class="section-label">Get in touch</p>
         <h2 class="section-title">Let's build something together</h2>
-        <p class="section-sub" style="margin-top:20px">Whether it's a single reel or an ongoing production partnership, I'd love to hear about your project. Reach out and let's make it happen.</p>
+        <p class="section-sub" style="margin-top:20px">Open to content leadership roles, team lead opportunities, and end-to-end production partnerships. Reach out and let's talk.</p>
       </div>
       <div class="contact-links reveal reveal-delay-2">
         <a href="mailto:abhishekshah1261996@gmail.com" class="contact-link">
@@ -326,7 +355,7 @@ footer a:hover{color:var(--accent2)}
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2024 Abhishek Shah &middot; Content Manager & End-to-End Production</p>
+  <p>&copy; 2026 Abhishek Shah &middot; Content Manager & End-to-End Production</p>
   <p style="margin-top:10px"><a href="#hero">Back to top &uarr;</a></p>
 </footer>
 
@@ -456,6 +485,27 @@ const revealObs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}});
 },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(el=>revealObs.observe(el));
+
+// ── COUNTER ANIMATION ──
+const statNums=document.querySelectorAll('.hero-stat .num');
+function animateCounters(){
+  statNums.forEach(el=>{
+    const text=el.textContent;
+    const num=parseInt(text);
+    const suffix=text.replace(/[0-9]/g,'');
+    let current=0;
+    const step=Math.ceil(num/40);
+    const timer=setInterval(()=>{
+      current+=step;
+      if(current>=num){current=num;clearInterval(timer)}
+      el.textContent=current+suffix;
+    },30);
+  });
+}
+const heroObs=new IntersectionObserver((entries)=>{
+  if(entries[0].isIntersecting){animateCounters();heroObs.disconnect()}
+},{threshold:.5});
+heroObs.observe(document.getElementById('hero'));
 </script>
 </body>
 </html>
